@@ -1,0 +1,15 @@
+generator client {
+  provider  = "prisma-client-py"
+  interface = "asyncio"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://XX:XX@db:5432/XX?schema=public" 
+}
+
+model User {
+  id        String    @id @unique @default(cuid()) @db.VarChar(255)
+  email     String    @unique @db.VarChar(255)
+  verified  Boolean   @default(true)
+}
